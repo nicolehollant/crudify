@@ -1,5 +1,5 @@
 const TextInput: React.FC<{
-  onInput: (v: string) => void;
+  onInput?: (v: string) => void;
   value?: string;
   name: string;
   label: string;
@@ -20,7 +20,7 @@ const TextInput: React.FC<{
             id={props.id}
             name={props.name}
             value={props.value}
-            onInput={(e: any) => props.onInput(e.target.value)}
+            onInput={(e: any) => props.onInput?.(e.target.value)}
             className={
               "col-start-1 col-end-2 row-start-1 row-end-2 h-full w-full resize-none overflow-hidden !border-none bg-slate-900 p-0 font-[inherit] !ring-0 focus:!outline-none " +
               (props.readOnly
@@ -45,7 +45,7 @@ const TextInput: React.FC<{
         name={props.name}
         value={props.value}
         readOnly={props.readOnly}
-        onInput={(e: any) => props.onInput(e.target.value)}
+        onInput={(e: any) => props.onInput?.(e.target.value)}
         className={
           " w-full rounded-lg border border-slate-700 bg-slate-900 p-2 shadow-sm transition duration-200 hover:shadow-md focus:border-fuchsia-600 focus:outline-none focus:ring focus:ring-fuchsia-500 focus:ring-opacity-50" +
           (props.readOnly

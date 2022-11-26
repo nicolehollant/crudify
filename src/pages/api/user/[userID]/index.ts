@@ -10,7 +10,7 @@ import {
 export default toMethods({
   // GET /user
   GET: catchErrors(async (req, res) => {
-    let { userID } = req.query;
+    const { userID } = req.query;
     if (!userID) {
       res.status(400).send(ErrorResponse("Missing params"));
       return;

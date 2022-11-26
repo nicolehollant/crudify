@@ -1,4 +1,4 @@
-import { JSONValue, useFetch } from "@hooks/useFetch";
+import { JSONValue, httpRequest } from "@hooks/httpRequest";
 import { useEffect, useState } from "react";
 import SplitPane, { Pane, SashContent } from "split-pane-react";
 import "split-pane-react/esm/themes/default.css";
@@ -64,7 +64,7 @@ const RestClient: React.FC<{
         activeRoute,
         body: JSON.parse(body),
       });
-      const res = await useFetch().any(
+      const res = await httpRequest().any(
         activeMethod as any,
         activeRoute,
         JSON.parse(body)

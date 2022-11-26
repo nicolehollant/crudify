@@ -1,4 +1,4 @@
-import { useFetch } from "@hooks/useFetch";
+import { httpRequest } from "@hooks/httpRequest";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 
@@ -16,7 +16,7 @@ const Entity: React.FC<{ userID: string; entityName: string }> = (props) => {
 const UserEntities: React.FC<{ userID: string }> = (props) => {
   const entities = useQuery({
     queryKey: [`userEntities-${props.userID}`],
-    queryFn: () => useFetch().get(`/api/user/${props.userID}`),
+    queryFn: () => httpRequest().get(`/api/user/${props.userID}`),
   });
   if (entities.isLoading || entities.isError || !entities.data) {
     return null;

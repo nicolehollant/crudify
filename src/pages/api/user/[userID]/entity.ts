@@ -13,7 +13,7 @@ import { z } from "zod";
 export default toMethods({
   // POST /user/:userID/entity
   POST: catchErrors(async (req, res) => {
-    let { userID } = req.query;
+    const { userID } = req.query;
     const { schema, name } = JSON.parse(req.body);
     if (!userID || !name || !schema) {
       res.status(400).send({

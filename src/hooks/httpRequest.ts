@@ -12,7 +12,7 @@ type QueryParams =
   | URLSearchParams;
 type RequestOptions<U = QueryParams> = { query?: U; headers?: HeadersInit };
 
-export const useFetch = () => {
+export const httpRequest = () => {
   const _get = async <T extends JSONValue = any, U = QueryParams>(
     path: string,
     options?: RequestOptions<U>

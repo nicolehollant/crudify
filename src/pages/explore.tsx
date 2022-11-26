@@ -5,7 +5,7 @@ import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import MainLayout from "@components/layouts/main";
 import { useRouter } from "next/router";
-import { useFetch } from "@hooks/useFetch";
+import { httpRequest } from "@hooks/httpRequest";
 import AppHeader from "@components/app-header";
 import UserEntities from "@components/user-entities";
 import Avatar from "@components/avatar";
@@ -56,7 +56,7 @@ const Dashboard: NextPage = () => {
   const router = useRouter();
   const explore = useQuery({
     queryKey: ["getExplore"],
-    queryFn: () => useFetch().get("/api/user/explore"),
+    queryFn: () => httpRequest().get("/api/user/explore"),
   });
 
   if (status === "loading" || explore.isLoading) {

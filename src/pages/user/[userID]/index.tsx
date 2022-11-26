@@ -5,7 +5,7 @@ import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import MainLayout from "@components/layouts/main";
 import { useRouter } from "next/router";
-import { useFetch } from "@hooks/useFetch";
+import { httpRequest } from "@hooks/httpRequest";
 import AppHeader from "@components/app-header";
 import UserEntities from "@components/user-entities";
 import Avatar from "@components/avatar";
@@ -15,7 +15,7 @@ const UserProfile: NextPage = () => {
   const router = useRouter();
   const user = useQuery({
     queryKey: [`getUserAccount-${router.query.userID}`],
-    queryFn: () => useFetch().get(`/api/user/${router.query.userID}`),
+    queryFn: () => httpRequest().get(`/api/user/${router.query.userID}`),
   });
   if (user.isLoading) {
     return (
@@ -56,7 +56,8 @@ const UserProfile: NextPage = () => {
             <hr className="border-t-2 border-fuchsia-900/30" />
             <section className="flex flex-1 flex-col gap-4">
               <h3 className="text-xl text-fuchsia-300/80">
-                <span className="capitalize">{user.data?.name}'s</span> Entities
+                <span className="capitalize">{user.data?.name}&apos;s</span>{" "}
+                Entities
               </h3>
               {user.data?.userID && (
                 <>

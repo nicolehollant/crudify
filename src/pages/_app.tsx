@@ -3,8 +3,6 @@ import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { trpc } from "../utils/trpc";
-
 import "../styles/globals.css";
 import "../styles/prism-dark.css";
 
@@ -23,4 +21,4 @@ const MyApp: AppType<{ session: Session | null }> = ({
   );
 };
 
-export default trpc.withTRPC(MyApp);
+export default MyApp;

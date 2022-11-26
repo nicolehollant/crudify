@@ -5,7 +5,7 @@ import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import MainLayout from "@components/layouts/main";
 import { useRouter } from "next/router";
-import { useFetch } from "@hooks/useFetch";
+import { httpRequest } from "@hooks/httpRequest";
 import AppHeader from "@components/app-header";
 import UserEntities from "@components/user-entities";
 import Avatar from "@components/avatar";
@@ -25,7 +25,9 @@ const TryEntityPage: React.FC<{
   const entity = useQuery({
     queryKey: [`getEntityValidator-${props.entityName}`],
     queryFn: () =>
-      useFetch().get(`/api/user/${props.userID}/${props.entityName}/validator`),
+      httpRequest().get(
+        `/api/user/${props.userID}/${props.entityName}/validator`
+      ),
   });
   useEffect(() => {
     if (!entity.isLoading) {

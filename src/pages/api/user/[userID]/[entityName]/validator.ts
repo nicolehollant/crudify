@@ -12,7 +12,7 @@ import { z } from "zod";
 // /user/:userID/:entityName/validator
 export default toMethods({
   GET: catchErrors(async (req, res) => {
-    let { userID, entityName } = req.query;
+    const { userID, entityName } = req.query;
     console.log({ userID, entityName });
     const { connection, collection } = await Users();
     const [result] = await collection

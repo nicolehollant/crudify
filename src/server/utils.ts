@@ -39,7 +39,7 @@ export const toMethods =
 export class CrudifyError extends Error {
   statusCode: number;
   data: any;
-  constructor(message: string, statusCode: number = 400, data?: any) {
+  constructor(message: string, statusCode = 400, data?: any) {
     super(message);
     this.name = "CrudifyError";
     this.data = data ?? null;

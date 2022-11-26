@@ -31,7 +31,7 @@ export default toMethods({
   POST: catchErrors(async (req, res) => {
     const session = await requireAuth(req);
     const email = session.user.email;
-    let { name, slug } = JSON.parse(req.body);
+    const { name, slug } = JSON.parse(req.body);
     if (!email || !name || !slug) {
       res.status(400).send(ErrorResponse("Missing params"));
       return;

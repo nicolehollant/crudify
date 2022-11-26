@@ -16,13 +16,13 @@ type Types =
 const SchemaProperty: React.FC<{
   fieldName: string;
   fieldValue: JsonValidator[string];
-  onUpdateFieldName: (v: string) => void;
-  onUpdateFieldType: (v: Types) => void;
+  onUpdateFieldName?: (v: string) => void;
+  onUpdateFieldType?: (v: Types) => void;
   isArrayParent?: boolean;
 }> = (props) => {
   const [fieldName, setFieldName] = useState(props.fieldName);
   const updateFieldName = (e: any) => {
-    props.onUpdateFieldName(e.target.value);
+    props.onUpdateFieldName?.(e.target.value);
   };
   const debounceUpdateFieldName = debounce(updateFieldName, 1500);
   return (
@@ -48,7 +48,7 @@ const SchemaProperty: React.FC<{
           name=""
           id=""
           onChange={(e) => {
-            props.onUpdateFieldType(e.target.value as any);
+            props.onUpdateFieldType?.(e.target.value as any);
           }}
           value={props.fieldValue.type}
         >
@@ -122,7 +122,6 @@ const SchemaTreeEditor: React.FC<{
                     isArrayParent={true}
                     fieldName={"entries"}
                     fieldValue={value?.entries ?? { entries: { type: "any" } }}
-                    onUpdateFieldName={() => {}}
                     onUpdateFieldType={(v) =>
                       props.onUpdate([...props.dotpath, k, "entries"], {
                         ...value.entries,

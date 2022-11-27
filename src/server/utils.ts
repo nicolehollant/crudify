@@ -5,8 +5,31 @@ import { z } from "zod";
 import { Users } from "./db";
 import { getSession } from "next-auth/react";
 import { DefaultSession, Session } from "next-auth";
+import Cors from "cors";
 export const ErrorResponse = (e: any): TErrorResponse => ({ error: e });
 export const nanoid = () => _nanoid(16);
+
+export const cors = Cors({
+  methods: ["POST", "GET", "HEAD"],
+});
+
+// Helper method to wait for a middleware to execute before continuing
+// And to throw an error when an error happens in a middleware
+export function runMiddleware(
+  req: NextApiRequest,
+  res: NextApiResponse,
+  fn: Function
+) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result: any) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+
+      return resolve(result);
+    });
+  });
+}
 
 type TNextFn = (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
 type TNextMethods = {
@@ -19,6 +42,7 @@ type TNextMethods = {
 export const toMethods =
   (handlers: Partial<TNextMethods>) =>
   async (req: NextApiRequest, res: NextApiResponse) => {
+    await runMiddleware(req, res, cors);
     if (req.method === "GET" && handlers.GET) {
       return handlers.GET(req, res);
     }
@@ -63,6 +87,7 @@ export const catchErrors =
           err?.data ??
           (err instanceof CrudifyError ? undefined : err) ??
           undefined,
+        stringified: JSON.stringify(err, null, 2),
       });
     }
   };

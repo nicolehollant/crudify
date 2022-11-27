@@ -26,16 +26,20 @@ export default NextAuth({
       if (user) {
         token.uid = user.id;
       }
-      const { connection, collection } = await Accounts();
-      await collection.findOneAndUpdate(
-        { email: profile?.email },
-        {
-          $set: {
-            name: (profile as any)?.username,
-            image: (profile as any)?.image_url,
-          },
-        }
-      );
+      try {
+        const { connection, collection } = await Accounts();
+        await collection.findOneAndUpdate(
+          { email: profile?.email },
+          {
+            $set: {
+              name: (profile as any)?.username,
+              image: (profile as any)?.image_url,
+            },
+          }
+        );
+      } catch (error) {
+        console.log(error);
+      }
       return token;
     },
   },
@@ -56,7 +60,7 @@ export default NextAuth({
           } as any),
           DiscordProvider({
             clientId: process.env.DISCORD_CLIENT_ID ?? "",
-            clientSecret: process.env.DISCORD_CLIENT_ID ?? "",
+            clientSecret: process.env.DISCORD_CLIENT_SECRET ?? "",
             allowDangerousEmailAccountLinking: true,
             async profile(profile) {
               if (!profile.avatar) {

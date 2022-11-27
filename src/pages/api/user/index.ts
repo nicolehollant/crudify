@@ -6,6 +6,7 @@ import {
   requireAuth,
   toMethods,
   CrudifyError,
+  parseNStringify,
 } from "@server/utils";
 
 //  /user
@@ -31,7 +32,7 @@ export default toMethods({
   POST: catchErrors(async (req, res) => {
     const session = await requireAuth(req);
     const email = session.user.email;
-    const { name, slug } = JSON.parse(req.body);
+    const { name, slug } = parseNStringify(req.body);
     if (!email || !name || !slug) {
       res.status(400).send(ErrorResponse("Missing params"));
       return;

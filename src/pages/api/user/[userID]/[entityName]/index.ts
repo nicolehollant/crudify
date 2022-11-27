@@ -6,6 +6,7 @@ import {
   ErrorResponse,
   getValidator,
   nanoid,
+  parseNStringify,
   toMethods,
 } from "@server/utils";
 import { z } from "zod";
@@ -43,7 +44,7 @@ export default toMethods({
       createValidatorFromJson(_validator?.entities.validator)
     );
     const id = nanoid();
-    const parsed = await validator.parseAsync(JSON.parse(req.body));
+    const parsed = await validator.parseAsync(parseNStringify(req.body));
     if (!Object.keys(parsed ?? {}).length) {
       res.status(400).send({ error: "Invalid" });
       return;

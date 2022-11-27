@@ -1,4 +1,4 @@
-import { JsonValidator, nanoid } from "@server/utils";
+import type { JsonValidator } from "@server/utils";
 import { NextPage } from "next";
 import React, { useEffect, useRef, useState } from "react";
 import { get, set, ensureExists } from "object-path";

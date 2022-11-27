@@ -5,6 +5,7 @@ import {
   ErrorResponse,
   getEmailByIdentifier,
   nanoid,
+  parseNStringify,
   requireAuthAsEmail,
   toMethods,
 } from "@server/utils";
@@ -14,7 +15,7 @@ export default toMethods({
   // POST /user/:userID/entity
   POST: catchErrors(async (req, res) => {
     const { userID } = req.query;
-    const { schema, name } = JSON.parse(req.body);
+    const { schema, name } = parseNStringify(req.body);
     if (!userID || !name || !schema) {
       res.status(400).send({
         error: "Missing params",

@@ -67,7 +67,7 @@ const RestClient: React.FC<{
       const res = await httpRequest().any(
         activeMethod as any,
         activeRoute,
-        JSON.parse(body)
+        body
       );
       setResponse(res);
     } catch (error) {

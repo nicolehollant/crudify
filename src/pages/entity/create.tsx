@@ -13,7 +13,7 @@ import IconPlus from "~icons/mdi/plus.jsx";
 import { useState } from "react";
 import TextInput from "@components/text-input";
 import SchemaTreeEditor from "@components/schema-tree-editor";
-import { JsonValidator } from "@server/utils";
+import type { JsonValidator } from "@server/utils";
 import { get, set, ensureExists } from "object-path";
 
 const TextMode: React.FC<{

@@ -9,9 +9,23 @@ import Cors from "cors";
 export const ErrorResponse = (e: any): TErrorResponse => ({ error: e });
 export const nanoid = () => _nanoid(16);
 
-export const cors = Cors({
-  methods: ["POST", "GET", "HEAD"],
-});
+export const cors = Cors();
+
+export const parseNStringify = (val: any): any => {
+  try {
+    const res = JSON.parse(val);
+    const recursed = parseNStringify(res);
+    if (recursed) {
+      return recursed;
+    }
+    return res;
+  } catch (error) {
+    if (typeof val === "object") {
+      return val;
+    }
+    return false;
+  }
+};
 
 // Helper method to wait for a middleware to execute before continuing
 // And to throw an error when an error happens in a middleware

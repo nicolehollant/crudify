@@ -45,6 +45,7 @@ const RestClient: React.FC<{
   baseURL: string;
   entityName: string;
 }> = (props) => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [activeMethod, setActiveMethod] = useState(
     props.routes[0]?.method ?? "GET"
   );

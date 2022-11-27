@@ -66,7 +66,7 @@ const Home: NextPage = () => {
       <MainLayout withAuthStatus={false}>
         <div className="mx-auto flex h-full w-full max-w-6xl flex-col items-start justify-center gap-12 px-6 py-4">
           <div className="grid gap-4">
-            <h1 className=" text-4xl font-medium tracking-wide text-transparent">
+            <h1 className=" text-2xl font-medium tracking-wide text-transparent sm:text-3xl md:text-4xl">
               <span className="bg-gradient-to-tr from-orange-400 via-rose-400  to-pink-500 bg-clip-text">
                 🚀
               </span>
@@ -74,23 +74,23 @@ const Home: NextPage = () => {
                 CRUDIFY
               </span>
             </h1>
-            <h2 className="flex gap-4 text-6xl font-medium transition-all duration-200">
-              Rapidly{" "}
-              <span className="w-[8ch] text-center">
+            <h2 className="flex flex-col gap-4 text-4xl font-medium transition-all duration-200 sm:text-5xl md:flex-row lg:text-6xl">
+              <span>Rapidly</span>
+              <span className="w-[8ch] md:text-center">
                 <CrudOps></CrudOps>
-              </span>{" "}
-              your data
+              </span>
+              <span>your data</span>
             </h2>
           </div>
-          <div className="flex gap-4">
+          <div className="flex w-full flex-col gap-4 sm:flex-row">
             <Link href="/auth/signin">
-              <div className="group flex w-40 items-center justify-around gap-2 rounded-lg border border-slate-400 px-4 py-2 text-xl text-slate-400 transition duration-300 hover:border-fuchsia-300 hover:text-fuchsia-300">
+              <div className="xs:w-40 xs:justify-around group flex w-full items-center justify-between gap-2 rounded-lg border border-slate-400 px-4 py-2 text-xl text-slate-400 transition duration-300 hover:border-fuchsia-300 hover:text-fuchsia-300">
                 <p>Sign In</p>
                 <IconArrowRight className="delay-500 duration-300 group-hover:translate-x-2" />
               </div>
             </Link>
             <Link href="/explore">
-              <div className="group flex w-40 items-center justify-around gap-2 px-4 py-2 text-xl text-slate-400 transition duration-300 hover:text-fuchsia-300">
+              <div className="xs:w-40 xs:justify-around group flex w-full items-center justify-between gap-2 px-4 py-2 text-xl text-slate-400 transition duration-300 hover:text-fuchsia-300">
                 <p>Explore</p>
                 <IconShimmer className=" animation-delay-500 animation-duration-750 block group-hover:animate-wiggle" />
               </div>

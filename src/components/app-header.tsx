@@ -19,7 +19,7 @@ const AppHeader: React.FC = () => {
         <div className="flex items-center gap-8 md:gap-12">
           <Link href="/explore">
             <div className="group flex items-center justify-around gap-2 transition duration-300 hover:text-fuchsia-300">
-              <p>Explore</p>
+              <p className="hidden sm:block">Explore</p>
               <IconShimmer className=" animation-delay-500 animation-duration-750 block group-hover:animate-wiggle" />
             </div>
           </Link>

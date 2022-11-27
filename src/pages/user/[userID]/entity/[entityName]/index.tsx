@@ -136,7 +136,7 @@ const EntityPage: React.FC<{
         <section title="GET ALL" className="grid gap-4">
           <p>
             <span className="font-bold tracking-wider text-green-500">GET</span>{" "}
-            <span className="ml-2 text-fuchsia-300">
+            <span className="ml-2 break-all text-fuchsia-300">
               {`${window.origin}/api/user/${props.userID}/${props.entityName}`}
             </span>
           </p>
@@ -160,7 +160,7 @@ const EntityPage: React.FC<{
             <span className="font-bold tracking-wider text-orange-500">
               POST
             </span>{" "}
-            <span className="ml-2 text-fuchsia-300">
+            <span className="ml-2 break-all text-fuchsia-300">
               {`${window.origin}/api/user/${props.userID}/${props.entityName}`}
             </span>
           </p>
@@ -184,7 +184,7 @@ const EntityPage: React.FC<{
         <section title="GET ONE" className="grid gap-4">
           <p>
             <span className="font-bold tracking-wider text-green-500">GET</span>{" "}
-            <span className="ml-2 text-fuchsia-300">
+            <span className="ml-2 break-all text-fuchsia-300">
               {`${window.origin}/api/user/${props.userID}/${props.entityName}/:entityID`}
             </span>
           </p>
@@ -206,7 +206,7 @@ const EntityPage: React.FC<{
         <section title="UPDATE ONE" className="grid gap-4">
           <p>
             <span className="font-bold tracking-wider text-blue-500">PUT</span>{" "}
-            <span className="ml-2 text-fuchsia-300">
+            <span className="ml-2 break-all text-fuchsia-300">
               {`${window.origin}/api/user/${props.userID}/${props.entityName}/:entityID`}
             </span>
           </p>
@@ -234,7 +234,7 @@ const EntityPage: React.FC<{
             <span className="font-bold tracking-wider text-red-500">
               DELETE
             </span>{" "}
-            <span className="ml-2 text-fuchsia-300">
+            <span className="ml-2 break-all text-fuchsia-300">
               {`${window.origin}/api/user/${props.userID}/${props.entityName}/:entityID`}
             </span>
           </p>

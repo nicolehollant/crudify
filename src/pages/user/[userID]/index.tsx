@@ -36,7 +36,7 @@ const UserProfile: NextPage = () => {
       <MainLayout>
         <div className="m-auto max-w-7xl px-8 py-12">
           <div className="flex flex-col gap-8 md:gap-12">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
               <section className="flex shrink-0 items-center gap-8">
                 <Avatar
                   email={user.data?.email ?? ""}
@@ -44,10 +44,10 @@ const UserProfile: NextPage = () => {
                   size="xl"
                 ></Avatar>
                 <div>
-                  <p className="text-2xl capitalize tracking-wide">
+                  <p className="break-all text-2xl capitalize tracking-wide">
                     {user.data?.name}
                   </p>
-                  <p className="text-xl tracking-wide text-slate-400">
+                  <p className="break-all text-xl tracking-wide text-slate-400">
                     {user.data?.slug}
                   </p>
                 </div>

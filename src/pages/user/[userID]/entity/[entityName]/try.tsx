@@ -123,7 +123,7 @@ const TryEntityByEntityNamePage: NextPage = () => {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <MainLayout>
-        <hr className="border-2 border-fuchsia-900/50" />
+        <hr className="hidden border-2 border-fuchsia-900/50 sm:block" />
         {router.query.userID && router.query.entityName && (
           <TryEntityPage
             entityName={router.query.entityName + ""}

@@ -24,6 +24,7 @@
       "@server/*": ["src/server/*"],
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
+      "@assets/*": ["src/assets/*"],
       "~types/*": ["src/types/*"],
     },
     "types": ["unplugin-icons/types/react"]

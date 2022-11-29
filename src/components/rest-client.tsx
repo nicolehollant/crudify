@@ -7,6 +7,10 @@ import Prism from "prismjs";
 import "prismjs/components/prism-json";
 import ToggledMenu from "./toggled-menu";
 import IconMenu from "~icons/mdi/menu.jsx";
+import IconBack from "~icons/mdi/arrow-left.jsx";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import YamlEditor from "./editor/yaml-editor";
 
 const MySashContent: any = SashContent;
 
@@ -76,6 +80,7 @@ const RestClient: React.FC<{
   baseURL: string;
   entityName: string;
 }> = (props) => {
+  const router = useRouter();
   const [mode, setMode] = useState<"request" | "response">("request");
   const [activeMethod, setActiveMethod] = useState(
     props.routes[0]?.method ?? "GET"
@@ -116,12 +121,14 @@ const RestClient: React.FC<{
             <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-300/70">
               trying entity:
             </p>
-            <p className="capitalize">
-              <span className="mr-2 bg-gradient-to-tr from-blue-400 via-teal-400  to-pink-500 bg-clip-text text-transparent">
-                🏗
-              </span>
-              {props.entityName}
-            </p>
+            <Link
+              href={`/user/${router.query.userID}/entity/${router.query.entityName}`}
+            >
+              <div className="flex items-center gap-1 text-sm capitalize text-blue-300 hover:underline">
+                <IconBack></IconBack>
+                <p>{props.entityName}</p>
+              </div>
+            </Link>
           </div>
         </div>
         <NavMenu
@@ -150,10 +157,18 @@ const RestClient: React.FC<{
           </button>
         </div>
         <div className="flex justify-between border-y-2 border-fuchsia-800/20 bg-black/30 px-4 sm:hidden">
-          <div className="flex items-center gap-8 from-black/20 to-fuchsia-900/5  shadow-lg sm:bg-gradient-to-br">
+          <div className="flex items-center gap-4 from-black/20 to-fuchsia-900/5  shadow-lg sm:bg-gradient-to-br">
+            <Link
+              href={`/user/${router.query.userID}/entity/${router.query.entityName}`}
+              className="border-b-2 border-transparent px-2 py-2 text-xs font-medium text-slate-400"
+            >
+              <div className="flex gap-1">
+                <IconBack></IconBack> Back
+              </div>
+            </Link>
             <button
               className={
-                "-mb-0.5 border-b-2 px-2 py-2 text-sm " +
+                "-mb-0.5 border-b-2 px-2 py-2 text-xs font-medium " +
                 (mode === "request"
                   ? "border-fuchsia-800"
                   : "border-transparent")
@@ -164,7 +179,7 @@ const RestClient: React.FC<{
             </button>
             <button
               className={
-                "-mb-0.5 border-b-2 px-2 py-2 text-sm " +
+                "-mb-0.5 border-b-2 px-2 py-2 text-xs font-medium " +
                 (mode === "response"
                   ? "border-fuchsia-800"
                   : "border-transparent")
@@ -178,7 +193,7 @@ const RestClient: React.FC<{
           <ToggledMenu
             trigger={
               <div className="flex items-center gap-2 py-2">
-                <p className="text-sm">Endpoints</p>
+                <p className="text-xs font-medium">Routes</p>
                 <IconMenu></IconMenu>
               </div>
             }
@@ -213,18 +228,18 @@ const RestClient: React.FC<{
               (mode === "response" ? "hidden" : "block")
             }
           >
-            <textarea
-              name=""
-              id=""
-              className="h-full w-full resize-none rounded-lg  bg-black/10 p-2 focus:outline-none focus:ring"
+            <YamlEditor
+              className="h-full overflow-hidden rounded-lg border-2 border-black/20 shadow-md focus-within:border-fuchsia-700/20 focus-within:ring"
+              minHeight="10em"
+              maxHeight="100%"
               value={body}
-              onChange={(e) => setBody(e.target.value)}
-            ></textarea>
+              onChange={(val) => setBody(val)}
+            ></YamlEditor>
           </div>
 
           <pre
             className={
-              "!m-0 h-full w-full overflow-auto !bg-slate-900 !p-3 " +
+              "!m-0 h-full w-full overflow-auto !bg-slate-900 !p-3 !pb-12 " +
               (mode === "request" ? "hidden" : "block")
             }
           >
@@ -251,17 +266,17 @@ const RestClient: React.FC<{
         >
           <Pane minSize="20%" maxSize="80%">
             <div className="h-full w-full bg-black/10 p-4">
-              <textarea
-                name=""
-                id=""
-                className="h-full w-full resize-none rounded-lg  bg-black/10 p-2 focus:outline-none focus:ring"
+              <YamlEditor
+                className="h-full overflow-hidden rounded-lg border-2 border-black/20 !text-lg shadow-md focus-within:border-fuchsia-700/20 focus-within:ring"
+                minHeight="10em"
+                maxHeight="100%"
                 value={body}
-                onChange={(e) => setBody(e.target.value)}
-              ></textarea>
+                onChange={(val) => setBody(val)}
+              ></YamlEditor>
             </div>
           </Pane>
-          <pre className="h-full w-full !bg-slate-900">
-            <code className="language-json">
+          <pre className="!m-0 h-full w-full overflow-auto !bg-slate-900 !p-3 !pb-12">
+            <code className="language-json !text-xs">
               {JSON.stringify(response, null, 2)}
             </code>
           </pre>

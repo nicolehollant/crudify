@@ -17,6 +17,7 @@ import "prismjs/components/prism-json";
 import { useEffect } from "react";
 import IconArrowRight from "~icons/mdi/arrow-right.jsx";
 import RestClient from "@components/rest-client";
+import { createEntityFromJson } from "src/assets/client-utils";
 
 const TryEntityPage: React.FC<{
   userID: string;
@@ -68,7 +69,11 @@ const TryEntityPage: React.FC<{
           method: "POST",
           path: `/:userID/:entityName`,
           pathResolved: `/${props.userID}/${props.entityName}`,
-          body: {},
+          body: JSON.stringify(
+            createEntityFromJson(entity.data?.entities?.validator),
+            null,
+            2
+          ),
           pathParameters: {
             ":userID": props.userID,
             ":entityName": props.entityName,
@@ -90,7 +95,11 @@ const TryEntityPage: React.FC<{
           method: "PUT",
           path: `/:userID/:entityName/:entityID`,
           pathResolved: `/${props.userID}/${props.entityName}/:entityID`,
-          body: {},
+          body: JSON.stringify(
+            createEntityFromJson(entity.data?.entities?.validator),
+            null,
+            2
+          ),
           pathParameters: {
             ":userID": props.userID,
             ":entityName": props.entityName,

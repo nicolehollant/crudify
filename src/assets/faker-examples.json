@@ -1,0 +1,944 @@
+{
+  "float": [
+    {
+      "name": "0Digit",
+      "example": 0.7667
+    },
+    {
+      "name": "1Digit",
+      "example": 4.3161
+    },
+    {
+      "name": "2Digit",
+      "example": 51.5065
+    },
+    {
+      "name": "3Digit",
+      "example": 566.6835
+    },
+    {
+      "name": "4Digit",
+      "example": 2241.8096
+    },
+    {
+      "name": "5Digit",
+      "example": 82617.3006
+    },
+    {
+      "name": "6Digit",
+      "example": 422065.0824
+    },
+    {
+      "name": "7Digit",
+      "example": 3563958.2793
+    },
+    {
+      "name": "8Digit",
+      "example": 28664606.7312
+    },
+    {
+      "name": "9Digit",
+      "example": 190245167.7861
+    }
+  ],
+  "int": [
+    {
+      "name": "1Digit",
+      "example": 6
+    },
+    {
+      "name": "2Digit",
+      "example": 75
+    },
+    {
+      "name": "3Digit",
+      "example": 676
+    },
+    {
+      "name": "4Digit",
+      "example": 4870
+    },
+    {
+      "name": "5Digit",
+      "example": 98252
+    },
+    {
+      "name": "6Digit",
+      "example": 559538
+    },
+    {
+      "name": "7Digit",
+      "example": 2485952
+    },
+    {
+      "name": "8Digit",
+      "example": 69681084
+    },
+    {
+      "name": "9Digit",
+      "example": 279752110
+    },
+    {
+      "name": "10Digit",
+      "example": 4773038103
+    }
+  ],
+  "address": [
+    {
+      "name": "buildingNumber",
+      "example": "0645"
+    },
+    {
+      "name": "cardinalDirection",
+      "example": "North"
+    },
+    {
+      "name": "city",
+      "example": "West Brandy"
+    },
+    {
+      "name": "cityName",
+      "example": "Raleigh"
+    },
+    {
+      "name": "country",
+      "example": "Christmas Island"
+    },
+    {
+      "name": "countryCode",
+      "example": "IN"
+    },
+    {
+      "name": "county",
+      "example": "Avon"
+    },
+    {
+      "name": "direction",
+      "example": "East"
+    },
+    {
+      "name": "latitude",
+      "example": "10.4177"
+    },
+    {
+      "name": "longitude",
+      "example": "11.4757"
+    },
+    {
+      "name": "ordinalDirection",
+      "example": "Southeast"
+    },
+    {
+      "name": "secondaryAddress",
+      "example": "Apt. 789"
+    },
+    {
+      "name": "state",
+      "example": "California"
+    },
+    {
+      "name": "stateAbbr",
+      "example": "AK"
+    },
+    {
+      "name": "street",
+      "example": "Rickie Flat"
+    },
+    {
+      "name": "streetAddress",
+      "example": "422 Orn Drive"
+    },
+    {
+      "name": "streetName",
+      "example": "Watson Extension"
+    },
+    {
+      "name": "timeZone",
+      "example": "Asia/Kolkata"
+    },
+    {
+      "name": "zipCode",
+      "example": "20295-3916"
+    }
+  ],
+  "image": [
+    {
+      "name": "abstract",
+      "example": "https://loremflickr.com/640/480/abstract"
+    },
+    {
+      "name": "animals",
+      "example": "https://loremflickr.com/640/480/animals"
+    },
+    {
+      "name": "avatar",
+      "example": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/718.jpg"
+    },
+    {
+      "name": "business",
+      "example": "https://loremflickr.com/640/480/business"
+    },
+    {
+      "name": "cats",
+      "example": "https://loremflickr.com/640/480/cats"
+    },
+    {
+      "name": "city",
+      "example": "https://loremflickr.com/640/480/city"
+    },
+    {
+      "name": "dataUri",
+      "example": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20baseProfile%3D%22full%22%20width%3D%22undefined%22%20height%3D%22undefined%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22grey%22%2F%3E%3Ctext%20x%3D%22NaN%22%20y%3D%22NaN%22%20font-size%3D%2220%22%20alignment-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%3Eundefinedxundefined%3C%2Ftext%3E%3C%2Fsvg%3E"
+    },
+    {
+      "name": "fashion",
+      "example": "https://loremflickr.com/640/480/fashion"
+    },
+    {
+      "name": "food",
+      "example": "https://loremflickr.com/640/480/food"
+    },
+    {
+      "name": "image",
+      "example": "https://loremflickr.com/640/480/city"
+    },
+    {
+      "name": "imageUrl",
+      "example": "https://loremflickr.com/640/480"
+    },
+    {
+      "name": "nature",
+      "example": "https://loremflickr.com/640/480/nature"
+    },
+    {
+      "name": "nightlife",
+      "example": "https://loremflickr.com/640/480/nightlife"
+    },
+    {
+      "name": "people",
+      "example": "https://loremflickr.com/640/480/people"
+    },
+    {
+      "name": "sports",
+      "example": "https://loremflickr.com/640/480/sports"
+    },
+    {
+      "name": "technics",
+      "example": "https://loremflickr.com/640/480/technics"
+    },
+    {
+      "name": "transport",
+      "example": "https://loremflickr.com/640/480/transport"
+    }
+  ],
+  "animal": [
+    {
+      "name": "bear",
+      "example": "Polar bear"
+    },
+    {
+      "name": "bird",
+      "example": "Common Swift"
+    },
+    {
+      "name": "cat",
+      "example": "Turkish Van"
+    },
+    {
+      "name": "cetacean",
+      "example": "Burrunan Dolphin"
+    },
+    {
+      "name": "cow",
+      "example": "Mongolian"
+    },
+    {
+      "name": "crocodilia",
+      "example": "Morelet’s Crocodile"
+    },
+    {
+      "name": "dog",
+      "example": "Japanese Spitz"
+    },
+    {
+      "name": "fish",
+      "example": "Short mackerel"
+    },
+    {
+      "name": "horse",
+      "example": "Abtenauer"
+    },
+    {
+      "name": "insect",
+      "example": "Pteromalid wasp"
+    },
+    {
+      "name": "lion",
+      "example": "Northeast Congo Lion"
+    },
+    {
+      "name": "rabbit",
+      "example": "Silver"
+    },
+    {
+      "name": "rodent",
+      "example": "Georychus"
+    },
+    {
+      "name": "snake",
+      "example": "Red blood python"
+    },
+    {
+      "name": "type",
+      "example": "crocodilia"
+    }
+  ],
+  "internet": [
+    {
+      "name": "avatar",
+      "example": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/406.jpg"
+    },
+    {
+      "name": "color",
+      "example": "#361806"
+    },
+    {
+      "name": "domainName",
+      "example": "respectful-doorknob.name"
+    },
+    {
+      "name": "domainSuffix",
+      "example": "biz"
+    },
+    {
+      "name": "domainWord",
+      "example": "buoyant-cinnamon"
+    },
+    {
+      "name": "email",
+      "example": "Norris_Emard@yahoo.com"
+    },
+    {
+      "name": "emoji",
+      "example": "🛫"
+    },
+    {
+      "name": "exampleEmail",
+      "example": "Carmen.Goodwin@example.org"
+    },
+    {
+      "name": "httpMethod",
+      "example": "PATCH"
+    },
+    {
+      "name": "httpStatusCode",
+      "example": 505
+    },
+    {
+      "name": "ip",
+      "example": "15.35.172.7"
+    },
+    {
+      "name": "ipv4",
+      "example": "254.125.48.117"
+    },
+    {
+      "name": "ipv6",
+      "example": "abc6:4a9d:fe45:2ea7:79ca:3935:e62d:5160"
+    },
+    {
+      "name": "mac",
+      "example": "bb:10:68:13:65:e3"
+    },
+    {
+      "name": "password",
+      "example": "HDbSg0LJNoUNncc"
+    },
+    {
+      "name": "port",
+      "example": 3165
+    },
+    {
+      "name": "protocol",
+      "example": "http"
+    },
+    {
+      "name": "url",
+      "example": "http://fragrant-raid.info"
+    },
+    {
+      "name": "userAgent",
+      "example": "Mozilla/5.0 (Windows; U; Windows NT 6.3) AppleWebKit/531.0.1 (KHTML, like Gecko) Chrome/35.0.830.0 Safari/531.0.1"
+    },
+    {
+      "name": "userName",
+      "example": "Kevon_Hansen55"
+    }
+  ],
+  "color": [
+    {
+      "name": "cssSupportedFunction",
+      "example": "color"
+    },
+    {
+      "name": "cssSupportedSpace",
+      "example": "display-p3"
+    },
+    {
+      "name": "human",
+      "example": "fuchsia"
+    },
+    {
+      "name": "rgb",
+      "example": "#5bd687"
+    },
+    {
+      "name": "space",
+      "example": "LCh"
+    }
+  ],
+  "commerce": [
+    {
+      "name": "color",
+      "example": "pink"
+    },
+    {
+      "name": "department",
+      "example": "Outdoors"
+    },
+    {
+      "name": "price",
+      "example": "607.00"
+    },
+    {
+      "name": "product",
+      "example": "Sausages"
+    },
+    {
+      "name": "productAdjective",
+      "example": "Fantastic"
+    },
+    {
+      "name": "productDescription",
+      "example": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support"
+    },
+    {
+      "name": "productMaterial",
+      "example": "Bronze"
+    },
+    {
+      "name": "productName",
+      "example": "Handcrafted Cotton Pizza"
+    }
+  ],
+  "lorem": [
+    {
+      "name": "lines",
+      "example": "Consequatur repellendus enim dolorum.\nVel molestiae officia esse tenetur dolorum.\nArchitecto totam harum exercitationem in doloribus vitae error.\nVero eaque quaerat minus a quis repellat minus eligendi architecto."
+    },
+    {
+      "name": "paragraph",
+      "example": "Voluptatum aliquid maiores dignissimos. Excepturi cupiditate quam voluptatem. In magni aut voluptatem provident molestiae hic similique voluptatum nulla. Molestiae repellendus natus doloribus explicabo. Deleniti incidunt laboriosam similique."
+    },
+    {
+      "name": "paragraphs",
+      "example": "Nemo iure eveniet in libero fugiat repudiandae consequuntur ipsum dignissimos. Sunt dicta saepe vitae mollitia deserunt. Quia laudantium pariatur praesentium quaerat molestias unde porro aspernatur facilis.\nVeniam quis delectus in fuga dolorum harum voluptatem molestias. Sapiente beatae tempore. Unde velit aspernatur alias aperiam. Suscipit nam praesentium aspernatur repudiandae nesciunt esse ex. Voluptatem ratione molestiae nisi adipisci. Occaecati aliquid fugiat et nemo animi odit voluptates cupiditate beatae.\nAut expedita rerum laudantium natus iure maiores placeat. Unde totam porro mollitia enim minus id et. Voluptatum vitae mollitia quod nemo quos sunt vitae reiciendis. Impedit debitis autem porro fuga molestias alias pariatur delectus a. Sint est necessitatibus corrupti sapiente nam aspernatur accusamus. Iusto sunt tempora totam."
+    },
+    {
+      "name": "sentence",
+      "example": "Aspernatur odit ex."
+    },
+    {
+      "name": "sentences",
+      "example": "Molestiae eum non. Fugit fugiat harum ullam porro itaque illum. Pariatur aliquam at. Dolor voluptate error est alias cumque fugit veritatis laudantium. Necessitatibus illum recusandae numquam adipisci magni laudantium dignissimos nam. Nihil blanditiis ipsam eum."
+    },
+    {
+      "name": "slug",
+      "example": "facilis-nemo-distinctio"
+    },
+    {
+      "name": "text",
+      "example": "ipsam"
+    },
+    {
+      "name": "word",
+      "example": "similique"
+    },
+    {
+      "name": "words",
+      "example": "laudantium distinctio recusandae"
+    }
+  ],
+  "company": [
+    {
+      "name": "bs",
+      "example": "visualize 24/365 mindshare"
+    },
+    {
+      "name": "bsAdjective",
+      "example": "viral"
+    },
+    {
+      "name": "bsBuzz",
+      "example": "incubate"
+    },
+    {
+      "name": "bsNoun",
+      "example": "infomediaries"
+    },
+    {
+      "name": "catchPhrase",
+      "example": "Seamless fault-tolerant array"
+    },
+    {
+      "name": "catchPhraseAdjective",
+      "example": "Decentralized"
+    },
+    {
+      "name": "catchPhraseDescriptor",
+      "example": "clear-thinking"
+    },
+    {
+      "name": "catchPhraseNoun",
+      "example": "database"
+    },
+    {
+      "name": "companyName",
+      "example": "Erdman and Sons"
+    },
+    {
+      "name": "companySuffix",
+      "example": "Group"
+    },
+    {
+      "name": "name",
+      "example": "Runolfsson - Halvorson"
+    }
+  ],
+  "music": [
+    {
+      "name": "genre",
+      "example": "Metal"
+    },
+    {
+      "name": "songName",
+      "example": "I Wanna Dance With Somebody (Who Loves Me)"
+    }
+  ],
+  "database": [
+    {
+      "name": "collation",
+      "example": "utf8_unicode_ci"
+    },
+    {
+      "name": "column",
+      "example": "title"
+    },
+    {
+      "name": "engine",
+      "example": "MyISAM"
+    },
+    {
+      "name": "mongodbObjectId",
+      "example": "f9ed5eefbdeb5cdd8e6fc399"
+    },
+    {
+      "name": "type",
+      "example": "binary"
+    }
+  ],
+  "name": [
+    {
+      "name": "firstName",
+      "example": "Orlando"
+    },
+    {
+      "name": "fullName",
+      "example": "Miss Brittany Kuhlman"
+    },
+    {
+      "name": "gender",
+      "example": "Cis man"
+    },
+    {
+      "name": "jobArea",
+      "example": "Mobility"
+    },
+    {
+      "name": "jobDescriptor",
+      "example": "Dynamic"
+    },
+    {
+      "name": "jobTitle",
+      "example": "Investor Markets Executive"
+    },
+    {
+      "name": "jobType",
+      "example": "Architect"
+    },
+    {
+      "name": "lastName",
+      "example": "Beatty"
+    },
+    {
+      "name": "middleName",
+      "example": "Kyle"
+    },
+    {
+      "name": "prefix",
+      "example": "Dr."
+    },
+    {
+      "name": "sex",
+      "example": "male"
+    },
+    {
+      "name": "sexType",
+      "example": "male"
+    },
+    {
+      "name": "suffix",
+      "example": "MD"
+    }
+  ],
+  "datatype": [
+    {
+      "name": "boolean",
+      "example": false
+    },
+    {
+      "name": "float",
+      "example": 82426.92
+    },
+    {
+      "name": "hexadecimal",
+      "example": "0x0"
+    },
+    {
+      "name": "json",
+      "example": "{\"foo\":67447,\"bar\":\"){jk_tE{ri\",\"bike\":\"KP3e,ARv|v\",\"a\":\"IB;(ZZ\\\\'gd\",\"b\":\"y9b|fFrZ>6\",\"name\":94512,\"prop\":24840}"
+    },
+    {
+      "name": "number",
+      "example": 57926
+    },
+    {
+      "name": "string",
+      "example": "d3U{fu+2I5"
+    },
+    {
+      "name": "uuid",
+      "example": "463919b7-7658-4ed5-96f3-d6af62f7db66"
+    }
+  ],
+  "phone": [
+    {
+      "name": "imei",
+      "example": "52-302578-123067-2"
+    },
+    {
+      "name": "number",
+      "example": "1-579-928-1818 x71077"
+    }
+  ],
+  "date": [
+    {
+      "name": "birthdate",
+      "example": "1965-07-14T17:43:44.281Z"
+    },
+    {
+      "name": "future",
+      "example": "2023-05-06T04:47:23.433Z"
+    },
+    {
+      "name": "month",
+      "example": "January"
+    },
+    {
+      "name": "past",
+      "example": "2022-06-25T01:01:45.742Z"
+    },
+    {
+      "name": "recent",
+      "example": "2022-11-29T03:49:07.456Z"
+    },
+    {
+      "name": "soon",
+      "example": "2022-11-30T09:59:52.659Z"
+    },
+    {
+      "name": "weekday",
+      "example": "Sunday"
+    }
+  ],
+  "random": [
+    {
+      "name": "alpha",
+      "example": "h"
+    },
+    {
+      "name": "alphaNumeric",
+      "example": "4"
+    },
+    {
+      "name": "locale",
+      "example": "de_CH"
+    },
+    {
+      "name": "numeric",
+      "example": "7"
+    },
+    {
+      "name": "word",
+      "example": "North"
+    },
+    {
+      "name": "words",
+      "example": "Shirt"
+    }
+  ],
+  "finance": [
+    {
+      "name": "account",
+      "example": "91523160"
+    },
+    {
+      "name": "accountName",
+      "example": "Savings Account"
+    },
+    {
+      "name": "amount",
+      "example": "410.31"
+    },
+    {
+      "name": "bic",
+      "example": "NNAQMT8V"
+    },
+    {
+      "name": "bitcoinAddress",
+      "example": "3e7RVQp2NaKG53zCKSE49hrxV2Re6N5V"
+    },
+    {
+      "name": "creditCardCVV",
+      "example": "908"
+    },
+    {
+      "name": "creditCardIssuer",
+      "example": "jcb"
+    },
+    {
+      "name": "creditCardNumber",
+      "example": "6374-0480-9397-0758"
+    },
+    {
+      "name": "currencyCode",
+      "example": "BRL"
+    },
+    {
+      "name": "currencyName",
+      "example": "Barbados Dollar"
+    },
+    {
+      "name": "currencySymbol",
+      "example": "S/."
+    },
+    {
+      "name": "ethereumAddress",
+      "example": "0xfad8ec9dddfc20e0fd5a8825af1a8868b8c3da9b"
+    },
+    {
+      "name": "iban",
+      "example": "LI401007711435119447V"
+    },
+    {
+      "name": "litecoinAddress",
+      "example": "3FAq5Bzv5X7jChKSxvg6Hdd6p59yZZ"
+    },
+    {
+      "name": "mask",
+      "example": "(...2475)"
+    },
+    {
+      "name": "pin",
+      "example": "3469"
+    },
+    {
+      "name": "routingNumber",
+      "example": "173724080"
+    },
+    {
+      "name": "transactionDescription",
+      "example": "deposit transaction at Zieme and Sons using card ending with ***(...8900) for VND 129.26 in account ***79672841"
+    },
+    {
+      "name": "transactionType",
+      "example": "withdrawal"
+    }
+  ],
+  "system": [
+    {
+      "name": "commonFileExt",
+      "example": "wav"
+    },
+    {
+      "name": "commonFileName",
+      "example": "volt_oregon_virginia.m2v"
+    },
+    {
+      "name": "commonFileType",
+      "example": "image"
+    },
+    {
+      "name": "cron",
+      "example": "* 9 ? 4 1"
+    },
+    {
+      "name": "directoryPath",
+      "example": "/net"
+    },
+    {
+      "name": "fileExt",
+      "example": "jpg"
+    },
+    {
+      "name": "fileName",
+      "example": "bugatti_com.atomsvc"
+    },
+    {
+      "name": "filePath",
+      "example": "/lib/district_principal_concrete.shar"
+    },
+    {
+      "name": "fileType",
+      "example": "chemical"
+    },
+    {
+      "name": "mimeType",
+      "example": "application/vnd.cryptii.pipe+json"
+    },
+    {
+      "name": "networkInterface",
+      "example": "wwo7"
+    },
+    {
+      "name": "semver",
+      "example": "7.5.4"
+    }
+  ],
+  "git": [
+    {
+      "name": "branch",
+      "example": "matrix-navigate"
+    },
+    {
+      "name": "commitEntry",
+      "example": "commit 6de2d9e7e4c24ad8d212eaed46ed7ba2c5e83c7a\r\nAuthor: Erwin Kuphal <Stewart_Baumbach@yahoo.com>\r\nDate: Tue Nov 29 2022 05:05:55 GMT-0500 (Eastern Standard Time)\r\n\r\n    generate redundant pixel\r\n"
+    },
+    {
+      "name": "commitMessage",
+      "example": "program solid state card"
+    },
+    {
+      "name": "commitSha",
+      "example": "fd0a40ad9bf97edc221b3e6fa0fd24da515c9072"
+    },
+    {
+      "name": "shortSha",
+      "example": "b82c561"
+    }
+  ],
+  "vehicle": [
+    {
+      "name": "bicycle",
+      "example": "Hybrid Bicycle"
+    },
+    {
+      "name": "color",
+      "example": "azure"
+    },
+    {
+      "name": "fuel",
+      "example": "Electric"
+    },
+    {
+      "name": "manufacturer",
+      "example": "Hyundai"
+    },
+    {
+      "name": "model",
+      "example": "V90"
+    },
+    {
+      "name": "type",
+      "example": "Hatchback"
+    },
+    {
+      "name": "vehicle",
+      "example": "Chrysler Escalade"
+    },
+    {
+      "name": "vin",
+      "example": "003ANVBS6ALY20268"
+    },
+    {
+      "name": "vrm",
+      "example": "QL83SID"
+    }
+  ],
+  "hacker": [
+    {
+      "name": "abbreviation",
+      "example": "XSS"
+    },
+    {
+      "name": "adjective",
+      "example": "open-source"
+    },
+    {
+      "name": "ingverb",
+      "example": "parsing"
+    },
+    {
+      "name": "noun",
+      "example": "port"
+    },
+    {
+      "name": "phrase",
+      "example": "If we copy the monitor, we can get to the JSON bandwidth through the online OCR bus!"
+    },
+    {
+      "name": "verb",
+      "example": "reboot"
+    }
+  ],
+  "word": [
+    {
+      "name": "adjective",
+      "example": "ill"
+    },
+    {
+      "name": "adverb",
+      "example": "valiantly"
+    },
+    {
+      "name": "conjunction",
+      "example": "when"
+    },
+    {
+      "name": "interjection",
+      "example": "ack"
+    },
+    {
+      "name": "noun",
+      "example": "customer"
+    },
+    {
+      "name": "preposition",
+      "example": "barring"
+    },
+    {
+      "name": "verb",
+      "example": "disappoint"
+    }
+  ]
+}

@@ -15,6 +15,7 @@ import TextInput from "@components/text-input";
 import SchemaTreeEditor from "@components/schema-tree-editor";
 import type { JsonValidator } from "@server/utils";
 import { get, set, ensureExists } from "object-path";
+import YamlEditor from "@components/editor/yaml-editor";
 
 const TextMode: React.FC<{
   schema: string;
@@ -31,13 +32,16 @@ const TextMode: React.FC<{
         value={props.name}
         placeholder="My entity..."
       ></TextInput>
-      <TextInput
-        label="Schema"
-        name="schema"
-        multiline={true}
-        onInput={(v) => props.setSchema(v)}
-        value={props.schema}
-      ></TextInput>
+      <div className="grid gap-1">
+        <p className="text-sm">Schema</p>
+        <YamlEditor
+          className="h-auto overflow-hidden rounded-lg border border-slate-700 shadow-md focus-within:border-fuchsia-700/20 focus-within:ring"
+          minHeight="10em"
+          maxHeight="100%"
+          onChange={(v) => props.setSchema(v)}
+          value={props.schema}
+        ></YamlEditor>
+      </div>
     </>
   );
 };

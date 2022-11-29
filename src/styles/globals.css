@@ -111,3 +111,17 @@ body, html, #__next {
 .animation-timing-linear {
   --animation-timing-fn: linear
 }
+
+:root, body {
+  --toastify-color-light: #ecfdf5;
+  --toastify-color-dark: #121212;
+  --toastify-color-info: #562756af;
+  --toastify-color-success: #274356af;
+  --toastify-color-warning: #946c33b9;
+  --toastify-color-error: #722838b3;
+  --toastify-color-transparent: rgba(255, 255, 255, 0.7);
+  --toastify-text-color-info: #ffffffeb;
+  --toastify-text-color-success: #ffffffeb;
+  --toastify-text-color-warning: #ffffffeb;
+  --toastify-text-color-error: #ffffffeb;
+}

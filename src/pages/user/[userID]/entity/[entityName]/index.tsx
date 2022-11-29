@@ -95,12 +95,22 @@ const EntityPage: React.FC<{
         <p className="text-2xl capitalize tracking-wide">
           {entity.data?.entities?.name}
         </p>
-        <Link href={`/user/${props.userID}/entity/${props.entityName}/try`}>
-          <div className="group flex w-40 items-center justify-around gap-2 rounded-lg border border-blue-400 px-4 py-2 text-xl text-blue-400 transition duration-300 hover:border-blue-300 hover:bg-blue-900/20 hover:text-blue-300">
-            <p>Try API</p>
-            <IconArrowRight className="delay-500 duration-300 group-hover:translate-x-2" />
-          </div>
-        </Link>
+        <div className="grid gap-2 sm:flex ">
+          <Link href={`/user/${props.userID}/entity/${props.entityName}/try`}>
+            <div className="group flex w-full items-center justify-around gap-2 rounded-lg border border-fuchsia-400 px-4 py-2 text-xl text-fuchsia-400 transition duration-300 hover:border-fuchsia-300 hover:bg-fuchsia-900/20 hover:text-fuchsia-300 sm:w-40">
+              <p>Try API</p>
+              <IconArrowRight className="delay-500 duration-300 group-hover:translate-x-2" />
+            </div>
+          </Link>
+          <Link
+            href={`/user/${props.userID}/entity/${props.entityName}/create`}
+          >
+            <div className="group flex w-max items-center justify-around gap-2 rounded-lg border border-blue-400 px-4 py-2 text-xl text-blue-400 transition duration-300 hover:border-blue-300 hover:bg-blue-900/20 hover:text-blue-300">
+              <p>Create Entities</p>
+              <IconPlus className="delay-500 duration-300 group-hover:animate-wiggle" />
+            </div>
+          </Link>
+        </div>
       </div>
       <hr className="border-t-2 border-fuchsia-900/30" />
       <div className="flex flex-col justify-between gap-8 md:flex-row md:gap-12">

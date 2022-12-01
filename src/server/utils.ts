@@ -249,6 +249,21 @@ export const AppEntity = <T extends z.ZodRawShape>(_validator: T) => {
   };
 };
 
+export const UserPoolValidator = z.object({
+  id: z.string(),
+  name: z.string(),
+  fromEmail: z.string(),
+  redirectUrl: z.string(),
+  users: z.array(
+    z.object({
+      id: z.string(),
+      email: z.string(),
+      avatar: z.string().nullish(),
+      data: z.any().nullish(),
+    })
+  ),
+});
+
 type JsonValidatorKey =
   | {
       type: "string";

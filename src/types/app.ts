@@ -1,5 +1,18 @@
 import { z } from "zod";
 
+export type UserPool = {
+  name: string;
+  id: string;
+  fromEmail: string;
+  redirectUrl: string;
+  users: {
+    id: string;
+    email: string;
+    avatar: string;
+    data?: any;
+  }[];
+};
+
 export type Entity<T extends z.ZodRawShape = any> = {
   _id?: string;
   data: any[];
@@ -11,6 +24,7 @@ export type User = {
   slug: string;
   userID: string;
   entities: Entity[];
+  userPools?: UserPool[];
   _id?: string;
 };
 export type TErrorResponse = { error: any; data?: any };

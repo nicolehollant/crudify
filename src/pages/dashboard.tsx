@@ -10,9 +10,14 @@ import AppHeader from "@components/app-header";
 import UserEntities from "@components/user-entities";
 import Avatar from "@components/avatar";
 import IconPlus from "~icons/mdi/plus.jsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Tab from "@components/tab-selector";
+import UserPools from "@components/user-pools";
 
 const Dashboard: NextPage = () => {
+  const [activeTab, setActiveTab] = useState<"Entities" | "User Pools">(
+    "Entities"
+  );
   const { data: session, status } = useSession();
   const router = useRouter();
   const currentUser = useQuery({
@@ -72,23 +77,58 @@ const Dashboard: NextPage = () => {
                   <p className="break-all text-lg">{session?.user?.email}</p>
                 </div>
               </section>
-              <Link
-                href="/entity/create"
-                className="group flex w-max items-center justify-around gap-2 rounded-md border-2 border-blue-400 bg-transparent px-6 py-2 text-xl text-blue-400 transition duration-300 hover:bg-blue-900/30 hover:text-blue-300"
-              >
-                <p>Create Entity</p>
-                <IconPlus className=" animation-delay-500 animation-duration-750 block group-hover:animate-wiggle" />
-              </Link>
+              {activeTab === "Entities" ? (
+                <Link
+                  href="/entity/create"
+                  className="group flex w-max items-center justify-around gap-2 rounded-md border-2 border-blue-400 bg-transparent px-6 py-2 text-xl text-blue-400 transition duration-300 hover:bg-blue-900/30 hover:text-blue-300"
+                >
+                  <p>Create Entity</p>
+                  <IconPlus className=" animation-delay-500 animation-duration-750 block group-hover:animate-wiggle" />
+                </Link>
+              ) : (
+                <Link
+                  href="/userPool/create"
+                  className="group flex w-max items-center justify-around gap-2 rounded-md border-2 border-green-400 bg-transparent px-6 py-2 text-xl text-green-400 transition duration-300 hover:bg-green-900/30 hover:text-green-300"
+                >
+                  <p>Create User Pool</p>
+                  <IconPlus className=" animation-delay-500 animation-duration-750 block group-hover:animate-wiggle" />
+                </Link>
+              )}
             </div>
             <hr className="border-t-2 border-fuchsia-900/30" />
-            <section className="flex flex-1 flex-col gap-4">
-              <h3 className="text-xl text-fuchsia-300/80">My Entities</h3>
-              {currentUser.data?.userID && (
-                <>
-                  <UserEntities userID={currentUser.data.userID}></UserEntities>
-                </>
-              )}
-            </section>
+            <Tab.Row className="text-xl">
+              <Tab.Button
+                value="Entities"
+                className="py-1 !font-medium"
+                onClick={setActiveTab as any}
+                isActive={activeTab === "Entities"}
+              ></Tab.Button>
+              <Tab.Button
+                value="User Pools"
+                className="py-1 !font-medium"
+                onClick={setActiveTab as any}
+                isActive={activeTab === "User Pools"}
+              ></Tab.Button>
+            </Tab.Row>
+            {activeTab === "Entities" ? (
+              <section className="flex flex-1 flex-col gap-4">
+                {currentUser.data?.userID && (
+                  <>
+                    <UserEntities
+                      userID={currentUser.data.userID}
+                    ></UserEntities>
+                  </>
+                )}
+              </section>
+            ) : (
+              <section className="flex flex-1 flex-col gap-4">
+                {currentUser.data?.userID && (
+                  <>
+                    <UserPools userID={currentUser.data.userID}></UserPools>
+                  </>
+                )}
+              </section>
+            )}
           </div>
         </div>
       </MainLayout>

@@ -23,7 +23,23 @@
           class="rounded bg-transparent"
         />
       </label>
-      <button class="rounded bg-blue-600 p-2" @click="submit">Set Up</button>
+      <label class="grid gap-1">
+        <p class="text-sm">Avatar</p>
+        <FileToBase64
+          v-model="twittifyAvatar"
+          :resized-width="160"
+        ></FileToBase64>
+      </label>
+      <button
+        class="rounded bg-blue-600 p-2"
+        @click="submit"
+        :disabled="isSubmitting"
+      >
+        {{ isSubmitting ? "loading..." : "Set Up" }}
+      </button>
+      <NuxtLink class="rounded p-2 text-blue-300" to="/" v-if="hasValidAccount">
+        Cancel
+      </NuxtLink>
     </form>
   </div>
 </template>
@@ -34,14 +50,24 @@ definePageMeta({
 });
 const { $auth } = useNuxtApp();
 const router = useRouter();
-const twittifyHandle = ref("");
-const twittifyDisplayName = ref("");
-const twittifyAvatar = ref(
-  `https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/${
-    Math.floor(Math.random() * 1200) + 1
-  }.jpg`
+const isSubmitting = ref(false);
+const twittifyHandle = ref($auth.account?.value?.data?.twittifyHandle ?? "");
+const twittifyDisplayName = ref(
+  $auth.account?.value?.data?.twittifyDisplayName ?? ""
 );
-const submit = () =>
+const twittifyAvatar = ref($auth.account?.value?.data?.twittifyAvatar ?? "");
+const hasValidAccount = computed(() => {
+  return (
+    $auth.account?.value?.data?.twittifyHandle &&
+    $auth.account?.value?.data?.twittifyDisplayName &&
+    $auth.account?.value?.data?.twittifyAvatar
+  );
+});
+const submit = () => {
+  if (isSubmitting.value) {
+    return;
+  }
+  isSubmitting.value = true;
   authApi
     .updateAccount(
       {
@@ -56,6 +82,12 @@ const submit = () =>
     )
     .then((v) => {
       console.log({ v });
+      isSubmitting.value = false;
       router.push("/");
+    })
+    .catch((e) => {
+      alert(e);
+      isSubmitting.value = false;
     });
+};
 </script>

@@ -213,6 +213,34 @@ const EntityPage: React.FC<{
             </pre>
           </div>
         </section>
+        <section title="MATCH ONE" className="grid gap-4">
+          <p>
+            <span className="font-bold tracking-wider text-orange-500">
+              POST
+            </span>{" "}
+            <span className="ml-2 break-all text-fuchsia-300">
+              {`${window.origin}/api/user/${props.userID}/${props.entityName}/where`}
+            </span>
+          </p>
+          <p className="text-slate-400">
+            - Finds one entity matching the query
+          </p>
+          <div className="grid justify-between gap-8 md:grid-cols-2 md:gap-12">
+            <pre className="rounded-lg border-2 border-fuchsia-600/10 shadow-lg shadow-fuchsia-700/10">
+              <p className="pb-2">Request Body</p>
+              <code className="language-typescript">
+                type Request = {"{"} [dotpath: string]: any {"}"}
+              </code>
+            </pre>
+            <pre className="rounded-lg border-2 border-fuchsia-600/10 shadow-lg shadow-fuchsia-700/10">
+              <p className="pb-2">Response Body</p>
+              <code className="language-typescript">
+                type Response = (typeof validator._input & {"{"} id: string{" "}
+                {"}"})
+              </code>
+            </pre>
+          </div>
+        </section>
         <section title="UPDATE ONE" className="grid gap-4">
           <p>
             <span className="font-bold tracking-wider text-blue-500">PUT</span>{" "}

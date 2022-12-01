@@ -14,7 +14,13 @@
           class="rounded bg-transparent"
         />
       </label>
-      <button class="rounded bg-blue-600 p-2" @click="submit">SignIn</button>
+      <button
+        class="rounded bg-blue-600 p-2"
+        @click="submit"
+        :disabled="isSubmitting"
+      >
+        {{ isSubmitting ? "loading..." : "Sign In" }}
+      </button>
     </form>
   </div>
 </template>
@@ -22,11 +28,26 @@
 <script setup lang="ts">
 const router = useRouter();
 const email = ref("");
-const submit = () =>
-  authApi.signIn({ email: email.value }).then((v) => {
-    console.log({ v });
-    if (v?.message === "Success" || (v as any) === "Successfully sent email") {
-      router.push("/auth/sent");
-    }
-  });
+const isSubmitting = ref(false);
+const submit = () => {
+  if (!isSubmitting.value) {
+    isSubmitting.value = true;
+    authApi
+      .signIn({ email: email.value })
+      .then((v) => {
+        console.log({ v });
+        if (
+          v?.message === "Success" ||
+          (v as any) === "Successfully sent email"
+        ) {
+          router.push("/auth/sent");
+        }
+        isSubmitting.value = false;
+      })
+      .catch((e) => {
+        alert(e);
+        isSubmitting.value = false;
+      });
+  }
+};
 </script>

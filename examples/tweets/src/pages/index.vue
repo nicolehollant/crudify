@@ -1,5 +1,5 @@
 <template>
-  <div class="m-auto max-w-[600px] border-x border-neutral-900">
+  <div class="m-auto min-h-screen max-w-[600px] border-x border-neutral-900">
     <div class="sticky top-0 z-20 bg-black/50 p-4 backdrop-blur">
       <div class="flex items-center justify-between">
         <p class="text-xl font-bold">Twittify</p>

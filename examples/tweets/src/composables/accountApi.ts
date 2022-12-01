@@ -1,35 +1,17 @@
 import { z } from "zod";
 
-const BASEURL = "https://crudify.app/api/user/iTduz8WS9Cug4-cH/twittify";
+const BASEURL = "https://crudify.app/api/user/iTduz8WS9Cug4-cH/twittifyAccount";
 
 const validator = z.object({
-  tweetID: z.string(),
-  username: z.string(),
-  createdAt: z.string(),
-  media: z.array(
-    z.object({
-      alt: z.string(),
-      url: z.string(),
-    })
-  ),
-  text: z.string(),
-  likes: z.array(
-    z.object({
-      username: z.string(),
-      displayName: z.string(),
-      avatar: z.string(),
-    })
-  ),
-  retweets: z.array(
-    z.object({
-      username: z.string(),
-      displayName: z.string(),
-      avatar: z.string(),
-    })
-  ),
   avatar: z.string(),
-  replies: z.array(z.any()),
+  banner: z.string(),
   displayName: z.string(),
+  userName: z.string(),
+  bio: z.string(),
+  following: z.array(z.any()),
+  tweets: z.array(z.any()),
+  followers: z.any(),
+  createdAt: z.string(),
 });
 
 type GetAllResponse = (typeof validator._input & { id: string })[];
@@ -40,7 +22,7 @@ type PutRequest = typeof validator._input;
 type PutResponse = typeof validator._input & { id: string };
 type DeleteResponse = typeof validator._input & { id: string };
 
-export const api = {
+export const accountApi = {
   /**
    * Create an entity
    */
@@ -86,20 +68,4 @@ export const api = {
     );
     return response;
   },
-};
-
-export const queryKeys = {
-  getAll: "getAll",
-  getOneByID: "getOneByID",
-};
-
-export const vueQueryParams = {
-  getAll: () => ({
-    queryKey: [queryKeys.getAll],
-    queryFn: api.getAll,
-  }),
-  getOneByID: (entityID: string) => ({
-    queryKey: [queryKeys.getOneByID],
-    queryFn: () => api.getOneByID(entityID),
-  }),
 };

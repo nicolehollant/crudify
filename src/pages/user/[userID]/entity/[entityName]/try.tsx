@@ -91,6 +91,17 @@ const TryEntityPage: React.FC<{
           },
         },
         {
+          title: "Match One",
+          method: "POST",
+          path: `/:userID/:entityName/where`,
+          pathResolved: `/${props.userID}/${props.entityName}/where`,
+          body: JSON.stringify({ id: "1" }, null, 2),
+          pathParameters: {
+            ":userID": props.userID,
+            ":entityName": props.entityName,
+          },
+        },
+        {
           title: "Update One",
           method: "PUT",
           path: `/:userID/:entityName/:entityID`,

@@ -29,7 +29,7 @@ export default toMethods({
     const auth = req.headers.authorization;
     const { refreshToken } = parseNStringify(req.body);
     if ((!refreshToken && !auth) || !process.env.JWT_SECRET) {
-      return res.status(401).send("no auth header");
+      return res.status(401).send({ message: "unauthorized" });
     }
     if (refreshToken) {
       const token = refreshToken.replace("Bearer", "").trim();
@@ -56,7 +56,7 @@ export default toMethods({
         expiration: Date;
       };
       if (expiration < new Date()) {
-        return res.status(403).send("token expired");
+        return res.status(403).send({ message: "token expired" });
       }
       const accessToken = generateAccessToken(email);
       const newRefreshToken = generateRefreshToken(email);

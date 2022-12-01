@@ -80,8 +80,8 @@ export default toMethods({
     });
     console.log({ mail });
     if (mail === "success") {
-      return res.status(200).send("Successfully sent email");
+      return res.status(200).json({ message: "Success" });
     }
-    return res.status(500).send("Failed to send email");
+    return res.status(500).json({ error: "Failed to send email" });
   }),
 });

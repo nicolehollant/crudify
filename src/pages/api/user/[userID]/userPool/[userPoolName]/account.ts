@@ -113,7 +113,7 @@ export default toMethods({
     const { email, userID, userPoolName } = isAuthenticatedInPool(req);
     const { avatar, data } = parseNStringify(req.body);
     if (!avatar && !data) {
-      return res.send("Unchanged");
+      return res.send({ message: "Unchanged" });
     }
     const { connection, collection } = await Users();
     const [existingAccount] = await collection

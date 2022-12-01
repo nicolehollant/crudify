@@ -1,0 +1,29 @@
+<template>
+  <div class="p-8 sm:p-[16vmin]">
+    <form @submit.prevent="submit" class="m-auto grid max-w-xs gap-2">
+      <h2 class="py-2 text-2xl">Twittify Sign In</h2>
+      <label for="email" class="grid gap-1">
+        <p class="text-sm">Email</p>
+        <input
+          type="text"
+          name="email"
+          v-model="email"
+          class="rounded bg-transparent"
+        />
+      </label>
+      <button class="rounded bg-blue-600 p-2" @click="submit">SignIn</button>
+    </form>
+  </div>
+</template>
+
+<script setup lang="ts">
+const router = useRouter();
+const email = ref("");
+const submit = () =>
+  authApi.signIn({ email: email.value }).then((v) => {
+    console.log({ v });
+    if (v?.message === "Success" || (v as any) === "Successfully sent email") {
+      router.push("/auth/sent");
+    }
+  });
+</script>

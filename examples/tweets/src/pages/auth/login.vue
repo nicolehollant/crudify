@@ -1,7 +1,10 @@
 <template>
   <div class="p-8 sm:p-[16vmin]">
-    <form @submit.prevent="submit" class="m-auto grid max-w-xs gap-2">
-      <h2 class="py-2 text-2xl">Twittify Sign In</h2>
+    <form
+      @submit.prevent="submit"
+      class="m-auto grid max-w-sm gap-4 rounded-xl bg-slate-900 py-6 px-8"
+    >
+      <h2 class="pb-2 text-2xl">Twittify Sign In</h2>
       <label for="email" class="grid gap-1">
         <p class="text-sm">Email</p>
         <input

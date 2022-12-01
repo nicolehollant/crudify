@@ -165,7 +165,8 @@ export default toMethods({
       { $or: [{ userID }, { slug: userID }] },
       {
         $set: {
-          "userPools.$[userPool].users.$[position]": updateData,
+          "userPools.$[userPool].users.$[position].data": updateData.data,
+          "userPools.$[userPool].users.$[position].avatar": updateData.avatar,
         },
       },
       {

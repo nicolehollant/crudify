@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import { useQuery } from "@tanstack/vue-query";
 definePageMeta({
-  middleware: ["auth"],
+  middleware: ["auth", "valid-account"],
 });
 const query = useQuery(vueQueryParams.getAll());
 const reversed = computed(() => {

@@ -3,7 +3,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     accessToken: useCookie("accessToken"),
     refreshToken: useCookie("refreshToken"),
   });
-  const account = ref({});
+  const account = ref<any>({});
 
   const signOut = () => {
     tokens.accessToken = null;

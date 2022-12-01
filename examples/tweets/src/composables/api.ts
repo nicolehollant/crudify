@@ -1,13 +1,12 @@
 import { z } from "zod";
 
-const BASEURL = "https://crudify.app/api/user/iTduz8WS9Cug4-cH/tweets";
+const BASEURL = "https://crudify.app/api/user/iTduz8WS9Cug4-cH/twittify";
 const AUTH_BASEURL =
   "https://crudify.app/api/user/iTduz8WS9Cug4-cH/userPool/Twittify";
 
 const validator = z.object({
   tweetID: z.string(),
   username: z.string(),
-  display_name: z.string(),
   media: z.array(
     z.object({
       alt: z.string(),
@@ -15,8 +14,23 @@ const validator = z.object({
     })
   ),
   text: z.string(),
-  likes: z.array(z.string()),
-  retweets: z.array(z.string()),
+  likes: z.array(
+    z.object({
+      username: z.string(),
+      displayName: z.string(),
+      avatar: z.string(),
+    })
+  ),
+  retweets: z.array(
+    z.object({
+      username: z.string(),
+      displayName: z.string(),
+      avatar: z.string(),
+    })
+  ),
+  avatar: z.string(),
+  replies: z.array(z.any()),
+  displayName: z.string(),
 });
 
 export type GetAllResponse = (typeof validator._input & { id: string })[];

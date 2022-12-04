@@ -13,5 +13,15 @@ export default defineNuxtConfig({
       Icons(),
     ],
   },
+  app: {
+    head: {
+      link: [
+        {
+          rel: "icon",
+          href: "/favicon.png",
+        },
+      ],
+    },
+  },
   srcDir: "src/",
 });

@@ -7,16 +7,12 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    IAkarIconsCopy: typeof import('~icons/akar-icons/copy')['default']
     IAntDesignArrowLeftOutlined: typeof import('~icons/ant-design/arrow-left-outlined')['default']
     IAntDesignCalendarOutlined: typeof import('~icons/ant-design/calendar-outlined')['default']
     IAntDesignCommentOutlined: typeof import('~icons/ant-design/comment-outlined')['default']
     IAntDesignHeartOutlined: typeof import('~icons/ant-design/heart-outlined')['default']
     IAntDesignRetweetOutlined: typeof import('~icons/ant-design/retweet-outlined')['default']
     IAntDesignShareAltOutlined: typeof import('~icons/ant-design/share-alt-outlined')['default']
-    IAntDesignShareOutlined: typeof import('~icons/ant-design/share-outlined')['default']
-    IAntDesignUploadOutlined: typeof import('~icons/ant-design/upload-outlined')['default']
-    IHeroiconsClipboard: typeof import('~icons/heroicons/clipboard')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

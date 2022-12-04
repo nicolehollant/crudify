@@ -3,18 +3,18 @@
     class="grid grid-cols-[auto,minmax(0,1fr)] gap-4 border-t-2 border-neutral-900 px-6 py-4"
   >
     <img
-      :src="tweet.avatar"
-      class="h-14 w-14 rounded-full bg-gradient-to-br from-black to-blue-900"
+      :src="getAccount.data.value?.avatar"
+      class="h-14 w-14 rounded-full bg-gradient-to-br from-black to-blue-900 object-cover"
       alt="My Avatar"
       onerror="this.src = ''"
     />
     <div class="flex flex-col pt-1 text-lg">
       <div class="flex gap-2 overflow-hidden leading-none text-neutral-50">
         <p class="line-clamp-1 font-bold">
-          {{ tweet.displayName }}
+          {{ getAccount.data.value?.displayName }}
         </p>
         <p class="line-clamp-1 w-min text-neutral-500">
-          @{{ tweet.username.split("@")[0] }}
+          @{{ getAccount.data.value?.userName.split("@")[0] }}
         </p>
         <p class="text-neutral-500">&middot;</p>
         <p class="shrink-0 text-neutral-500">
@@ -64,7 +64,7 @@
           @click="likeTweet.mutate()"
           :class="{
             'text-red-500': tweet.likes.some(
-              (a) => a.username === $auth.account.value.data.twittifyHandle
+              (a) => a.accountID === $auth.profile.value?.accountID
             ),
           }"
         >
@@ -81,22 +81,28 @@
 </template>
 
 <script setup lang="ts">
-import { useMutation, useQueryClient } from "@tanstack/vue-query";
-import type { GetOneResponse } from "@/composables/api";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/vue-query";
+import type { TweetsApi } from "@/composables/api";
 import { v4 } from "uuid";
 const queryClient = useQueryClient();
 const props = defineProps<{
-  tweet: GetOneResponse;
+  tweet: TweetsApi["GetOneResponse"];
 }>();
 
 const { $auth } = useNuxtApp();
+
+const getAccount = useQuery({
+  queryFn: () => accountApi.match({ accountID: props.tweet.accountID }),
+  queryKey: [`getTweet-${props.tweet.accountID}`],
+});
 
 const likeTweet = useMutation({
   mutationKey: ["likeTweet"],
   mutationFn: () => {
     if (
+      !$auth.profile.value?.accountID ||
       props.tweet.likes.some(
-        (a) => a.username === $auth.account.value.data.twittifyHandle
+        (a) => a.accountID === $auth.profile.value?.accountID
       )
     ) {
       throw new Error("invalid");
@@ -105,11 +111,7 @@ const likeTweet = useMutation({
       ...props.tweet,
       likes: [
         ...props.tweet.likes,
-        {
-          avatar: $auth.account.value.data.twittifyAvatar,
-          displayName: $auth.account.value.data.twittifyDisplayName,
-          username: $auth.account.value.data.twittifyHandle,
-        },
+        { accountID: $auth.profile.value?.accountID },
       ],
     });
   },

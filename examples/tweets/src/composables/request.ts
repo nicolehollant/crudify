@@ -1,3 +1,14 @@
+class UseRequestError extends Error {
+  statusCode: number;
+  data: any;
+  constructor(message: string, statusCode = 400, data?: any) {
+    super(message);
+    this.name = "UseRequestError";
+    this.data = data ?? null;
+    this.statusCode = statusCode;
+  }
+}
+
 export type JSONValue =
   | string
   | number
@@ -23,6 +34,16 @@ const _get = async <T extends JSONValue = any, U = QueryParams>(
     headers,
   });
   const json: T = await response.json();
+  if (!response.ok) {
+    throw new UseRequestError(response.statusText, response.status, {
+      response: json,
+      request: {
+        method: "POST",
+        url: [path, query].filter((a) => !!a).join("?"),
+        headers,
+      },
+    });
+  }
   return json;
 };
 
@@ -37,6 +58,16 @@ const _delete = async <T extends JSONValue = any, U = QueryParams>(
     headers,
   });
   const json: T = await response.json();
+  if (!response.ok) {
+    throw new UseRequestError(response.statusText, response.status, {
+      response: json,
+      request: {
+        method: "POST",
+        url: [path, query].filter((a) => !!a).join("?"),
+        headers,
+      },
+    });
+  }
   return json;
 };
 
@@ -57,6 +88,17 @@ const _post = async <
     headers,
   });
   const json: T = await response.json();
+  if (!response.ok) {
+    throw new UseRequestError(response.statusText, response.status, {
+      response: json,
+      request: {
+        method: "POST",
+        body,
+        url: [path, query].filter((a) => !!a).join("?"),
+        headers,
+      },
+    });
+  }
   return json;
 };
 
@@ -77,6 +119,17 @@ const _put = async <
     headers,
   });
   const json: T = await response.json();
+  if (!response.ok) {
+    throw new UseRequestError(response.statusText, response.status, {
+      response: json,
+      request: {
+        method: "POST",
+        body,
+        url: [path, query].filter((a) => !!a).join("?"),
+        headers,
+      },
+    });
+  }
   return json;
 };
 

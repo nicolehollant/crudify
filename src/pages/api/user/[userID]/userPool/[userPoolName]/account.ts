@@ -44,9 +44,8 @@ export default toMethods({
           },
         },
         {
-          $project: {
-            "userPools.users": 1,
-            preserveNullAndEmptyArrays: true,
+          $unwind: {
+            path: "$userPools.users",
           },
         },
         {
@@ -57,6 +56,7 @@ export default toMethods({
         {
           $project: {
             "userPools.users": 1,
+            preserveNullAndEmptyArrays: true,
           },
         },
       ])
@@ -132,9 +132,8 @@ export default toMethods({
           },
         },
         {
-          $project: {
-            "userPools.users": 1,
-            preserveNullAndEmptyArrays: true,
+          $unwind: {
+            path: "$userPools.users",
           },
         },
         {
@@ -145,6 +144,7 @@ export default toMethods({
         {
           $project: {
             "userPools.users": 1,
+            preserveNullAndEmptyArrays: true,
           },
         },
       ])

@@ -26,28 +26,31 @@
 </template>
 
 <script setup lang="ts">
+import { useQueryClient } from "@tanstack/vue-query";
+
 const router = useRouter();
 const email = ref("");
 const isSubmitting = ref(false);
-const submit = () => {
-  if (!isSubmitting.value) {
-    isSubmitting.value = true;
-    authApi
-      .signIn({ email: email.value })
-      .then((v) => {
-        console.log({ v });
-        if (
-          v?.message === "Success" ||
-          (v as any) === "Successfully sent email"
-        ) {
-          router.push("/auth/sent");
-        }
-        isSubmitting.value = false;
-      })
-      .catch((e) => {
-        alert(e);
-        isSubmitting.value = false;
-      });
+const queryClient = useQueryClient();
+
+const submit = async () => {
+  try {
+    if (!isSubmitting.value) {
+      isSubmitting.value = true;
+      const v = await authApi.signIn({ email: email.value });
+      console.log({ v });
+      if (
+        v?.message === "Success" ||
+        (v as any) === "Successfully sent email"
+      ) {
+        await queryClient.invalidateQueries();
+        router.push("/auth/sent");
+      }
+      isSubmitting.value = false;
+    }
+  } catch (error) {
+    alert(error);
+    isSubmitting.value = false;
   }
 };
 </script>

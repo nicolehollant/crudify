@@ -10,7 +10,7 @@
         <input
           type="text"
           name="email"
-          v-model="twittifyHandle"
+          v-model="state.userName"
           class="rounded bg-transparent"
         />
       </label>
@@ -19,75 +19,95 @@
         <input
           type="text"
           name="email"
-          v-model="twittifyDisplayName"
+          v-model="state.displayName"
+          class="rounded bg-transparent"
+        />
+      </label>
+      <label for="email" class="grid gap-1">
+        <p class="text-sm">Bio</p>
+        <input
+          type="text"
+          name="email"
+          v-model="state.bio"
           class="rounded bg-transparent"
         />
       </label>
       <label class="grid gap-1">
         <p class="text-sm">Avatar</p>
         <FileToBase64
-          v-model="twittifyAvatar"
+          v-model="state.avatar"
           :resized-width="160"
         ></FileToBase64>
       </label>
-      <button
-        class="rounded bg-blue-600 p-2"
-        @click="submit"
-        :disabled="isSubmitting"
-      >
+      <label class="grid gap-1">
+        <p class="text-sm">Banner Color</p>
+        <div
+          class="h-8 w-16 cursor-pointer rounded border-2 border-gray-700"
+          :style="{ background: state.banner }"
+        ></div>
+        <input type="color" v-model="state.banner" class="sr-only" />
+      </label>
+      <button class="rounded bg-blue-600 p-2" :disabled="isSubmitting">
         {{ isSubmitting ? "loading..." : "Set Up" }}
       </button>
-      <NuxtLink class="rounded p-2 text-blue-300" to="/" v-if="hasValidAccount">
-        Cancel
-      </NuxtLink>
     </form>
   </div>
 </template>
 
 <script setup lang="ts">
+import type { AccountApiTypes } from "@/composables/accountApi";
 definePageMeta({
   middleware: ["auth"],
 });
 const { $auth } = useNuxtApp();
 const router = useRouter();
 const isSubmitting = ref(false);
-const twittifyHandle = ref($auth.account?.value?.data?.twittifyHandle ?? "");
-const twittifyDisplayName = ref(
-  $auth.account?.value?.data?.twittifyDisplayName ?? ""
-);
-const twittifyAvatar = ref($auth.account?.value?.data?.twittifyAvatar ?? "");
-const hasValidAccount = computed(() => {
-  return (
-    $auth.account?.value?.data?.twittifyHandle &&
-    $auth.account?.value?.data?.twittifyDisplayName &&
-    $auth.account?.value?.data?.twittifyAvatar
-  );
+const state = reactive<AccountApiTypes["PostRequest"]>({
+  avatar: $auth.profile.value?.avatar ?? "",
+  banner: $auth.profile.value?.banner ?? "#a21caf",
+  bio: $auth.profile.value?.bio ?? "",
+  createdAt: $auth.profile.value?.createdAt ?? new Date().toISOString(),
+  displayName: $auth.profile.value?.displayName ?? "",
+  userName: $auth.profile.value?.userName ?? "",
+  accountID: $auth.profile.value?.accountID ?? $auth.account.value?.id,
+  following: $auth.profile.value?.following ?? [],
+  tweets: $auth.profile.value?.tweets ?? [],
+  followers: $auth.profile.value?.followers ?? [],
 });
-const submit = () => {
-  if (isSubmitting.value) {
-    return;
+const hasAccount = async () => {
+  try {
+    const data = await accountApi.match({ accountID: $auth.account.value?.id });
+    if (data) {
+      return true;
+    }
+    return false;
+  } catch (error) {
+    return false;
   }
-  isSubmitting.value = true;
-  authApi
-    .updateAccount(
-      {
-        data: {
-          ...($auth.account.value?.data ?? {}),
-          twittifyHandle: twittifyHandle.value,
-          twittifyDisplayName: twittifyDisplayName.value,
-          twittifyAvatar: twittifyAvatar.value,
-        },
-      },
-      $auth.tokens.accessToken ?? ""
-    )
-    .then((v) => {
-      console.log({ v });
-      isSubmitting.value = false;
-      router.push("/");
-    })
-    .catch((e) => {
-      alert(e);
-      isSubmitting.value = false;
-    });
+};
+const submit = async () => {
+  try {
+    if (isSubmitting.value) {
+      return;
+    }
+    if (!state.accountID || !state.displayName || !state.userName) {
+      throw new Error("Invalid");
+    }
+    const existing = await hasAccount();
+    isSubmitting.value = true;
+    if (existing && $auth.profile.value?.id) {
+      await accountApi.updateOne($auth.profile.value?.id, {
+        ...$auth.profile.value,
+        ...state,
+      });
+    } else if (!existing) {
+      await accountApi.create(state);
+    }
+    isSubmitting.value = false;
+    router.push("/");
+  } catch (error) {
+    alert(error);
+    isSubmitting.value = false;
+  }
 };
 </script>

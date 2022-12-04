@@ -3,7 +3,7 @@
     <div class="grid grid-cols-[auto,minmax(0,1fr)] gap-4 px-6 py-4">
       <NuxtLink to="/account/setup" class="h-max w-max rounded-full">
         <img
-          :src="$auth.account.value.data.twittifyAvatar"
+          :src="$auth.profile.value.avatar"
           class="h-14 w-14 rounded-full bg-gradient-to-br from-black to-blue-900 object-cover"
           alt="My Avatar"
           onerror="this.src = ''"
@@ -11,7 +11,7 @@
       </NuxtLink>
       <div class="flex flex-col gap-4">
         <label for="username" class="grid gap-1">
-          <p class="text-sm">@{{ $auth.account.value.data.twittifyHandle }}</p>
+          <p class="text-sm">@{{ $auth.profile.value.userName }}</p>
           <textarea
             v-model="state.content"
             name="whatsHappening"
@@ -50,7 +50,7 @@ const mutation = useMutation({
       throw new Error("invalid");
     }
     return api.create({
-      displayName: $auth.account.value.data.twittifyDisplayName,
+      accountID: $auth.profile.value.accountID,
       likes: [],
       retweets: [],
       replies: [],
@@ -58,8 +58,6 @@ const mutation = useMutation({
       createdAt: new Date().toISOString(),
       text: state.content,
       tweetID: v4(),
-      username: $auth.account.value.data.twittifyHandle,
-      avatar: $auth.account.value.data.twittifyAvatar,
     });
   },
   onSuccess: () => {

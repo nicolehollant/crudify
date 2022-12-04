@@ -1,4 +1,5 @@
 import { useQueryClient } from "@tanstack/vue-query";
+import { AccountApiResponse } from "../composables/accountApi";
 
 export default defineNuxtPlugin((nuxtApp) => {
   const tokens = reactive({
@@ -6,6 +7,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     refreshToken: useCookie("refreshToken"),
   });
   const account = ref<any>({});
+  const profile = ref<AccountApiResponse>();
 
   function deleteAllCookies() {
     const cookies = document.cookie.split(";");
@@ -22,6 +24,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     tokens.accessToken = null;
     tokens.refreshToken = null;
     account.value = {};
+    profile.value = undefined;
     deleteAllCookies();
     window.location.reload();
   };
@@ -32,6 +35,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         tokens,
         account,
         signOut,
+        profile,
       },
     },
   };

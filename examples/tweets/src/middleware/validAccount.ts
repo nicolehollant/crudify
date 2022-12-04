@@ -1,11 +1,15 @@
 export default defineNuxtRouteMiddleware(async () => {
-  const { $auth } = useNuxtApp();
-  if (
-    !$auth.account.value?.data?.twittifyHandle ||
-    !$auth.account.value?.data?.twittifyDisplayName ||
-    !$auth.account.value?.data?.twittifyAvatar
-  ) {
+  try {
+    const { $auth } = useNuxtApp();
+    if (
+      !$auth.profile.value?.avatar ||
+      !$auth.profile.value?.displayName ||
+      !$auth.profile.value?.userName
+    ) {
+      return navigateTo("/account/setup");
+    }
+    return;
+  } catch (error) {
     return navigateTo("/account/setup");
   }
-  return;
 });

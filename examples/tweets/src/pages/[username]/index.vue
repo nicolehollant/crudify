@@ -35,7 +35,7 @@
           alt="My Avatar"
           onerror="this.src = ''"
         />
-        <button>Follow</button>
+        <!-- <button>Follow</button> -->
       </div>
       <div class="px-6 pt-20 pb-4">
         <div>

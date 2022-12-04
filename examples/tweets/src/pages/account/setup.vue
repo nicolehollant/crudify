@@ -52,7 +52,6 @@
       </button>
     </form>
   </div>
-  <pre><code>{{$auth.account.value}}</code></pre>
 </template>
 
 <script setup lang="ts">

@@ -27,7 +27,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
           navigateTo("/account/setup");
         }
       });
-    if (!profile) {
+    if (!profile?.length) {
       console.log(
         "Auth Middleware: Does not have profile, redirecting to account setup"
       );
@@ -38,7 +38,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
       }
       return;
     }
-    $auth.profile.value = profile;
+    $auth.profile.value = profile[0];
     return;
   } catch (error) {
     if (to.path === "/account/setup") {

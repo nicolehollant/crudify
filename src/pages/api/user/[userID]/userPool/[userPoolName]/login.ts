@@ -78,7 +78,6 @@ export default toMethods({
         }
       );
     });
-    console.log({ mail });
     if (mail === "success") {
       return res.status(200).json({ message: "Success" });
     }

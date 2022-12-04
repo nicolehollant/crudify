@@ -61,7 +61,7 @@ export default toMethods({
         },
       ])
       .toArray();
-    if (!existingAccount?.userPools?.users?.[0]) {
+    if (!existingAccount?.userPools?.users) {
       const account = z
         .object({
           id: z.string(),
@@ -106,7 +106,7 @@ export default toMethods({
         isAuthorized: true,
         isNewAccount: false,
       },
-      ...existingAccount.userPools.users[0],
+      ...existingAccount.userPools.users,
     });
   }),
   PUT: catchErrors(async (req, res) => {
@@ -149,11 +149,11 @@ export default toMethods({
         },
       ])
       .toArray();
-    if (!existingAccount?.userPools?.users?.[0]) {
+    if (!existingAccount?.userPools?.users) {
       throw new CrudifyError("Not found", 404);
     }
     const updateData = {
-      ...existingAccount.userPools.users[0],
+      ...existingAccount.userPools.users,
     };
     if (data) {
       updateData.data = data;

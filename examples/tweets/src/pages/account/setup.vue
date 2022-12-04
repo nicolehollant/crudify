@@ -52,6 +52,7 @@
       </button>
     </form>
   </div>
+  <pre><code>{{$auth.account.value}}</code></pre>
 </template>
 
 <script setup lang="ts">
@@ -77,7 +78,7 @@ const state = reactive<AccountApiTypes["PostRequest"]>({
 const hasAccount = async () => {
   try {
     const data = await accountApi.match({ accountID: $auth.account.value?.id });
-    if (data) {
+    if (data?.length) {
       return true;
     }
     return false;
@@ -91,6 +92,11 @@ const submit = async () => {
       return;
     }
     if (!state.accountID || !state.displayName || !state.userName) {
+      console.log({
+        accountID: state.accountID,
+        displayName: state.displayName,
+        userName: state.userName,
+      });
       throw new Error("Invalid");
     }
     const existing = await hasAccount();

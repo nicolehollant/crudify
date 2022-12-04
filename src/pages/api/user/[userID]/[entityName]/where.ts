@@ -23,7 +23,7 @@ export default toMethods({
       ])
     );
     const { connection, collection } = await Users();
-    const [result] = await collection
+    const result = await collection
       .aggregate([
         {
           $match: { $or: [{ userID }, { slug: userID }] },
@@ -45,9 +45,9 @@ export default toMethods({
         },
       ])
       .toArray();
-    if (!result) {
+    if (!result?.length) {
       throw new CrudifyError("not found");
     }
-    res.send(result.entities.data);
+    res.send(result.map((a) => a.entities.data));
   }),
 });

@@ -117,7 +117,6 @@ export default toMethods({
     if (result.modifiedCount > 0) {
       return res.send({ message: "Success", data: updatePayload });
     }
-    console.log({ result });
     res.status(400).send({ error: "Invalid" });
   }),
 });

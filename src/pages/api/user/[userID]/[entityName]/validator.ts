@@ -13,7 +13,6 @@ import { z } from "zod";
 export default toMethods({
   GET: catchErrors(async (req, res) => {
     const { userID, entityName } = req.query;
-    console.log({ userID, entityName });
     const { connection, collection } = await Users();
     const [result] = await collection
       .aggregate([
